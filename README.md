@@ -1,2 +1,2 @@
-gosha sucks
+gosha doesnt sucks
 
