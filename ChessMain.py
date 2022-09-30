@@ -24,6 +24,36 @@ def main():
     clock = p.time.Clock()
 
     gs = engine.GameState()
-    load_Images()
+    # load_images() 
+
+    running = True
+    while running:
+        for e in p.event.get():
+            if e.type == p.QUIT:
+                running = False
+
+        draw_Game_State(screen, gs)
+        clock.tick(Max_FPS)
+        p.display.flip()
+        
+
+def draw_Game_State(screen, gs):
+    draw_Board(screen)
+    draw_Pieces(screen,gs.board)
+
+def draw_Board(screen):
+    colors = [p.Color("white"), p.Color("gray")]
+
+    for r in range(DIMENSION):
+        for c in range(DIMENSION):
+           color = colors[ ( (r+c)%2 )] 
+           p.draw.rect(screen,color, p.Rect(c*Square_Size, r*Square_Size, Square_Size, Square_Size) )
+
+def draw_Pieces(screen,gs):
+    pass
+
+if __name__ == "__main__":
+    main()
+
 
 
