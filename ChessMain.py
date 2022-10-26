@@ -9,7 +9,7 @@ DIMENSION = 8
 Square_Size = HEIGHT // DIMENSION
 Max_FPS = 15
 IMAGES = {}
-
+rank = {"a":1, "b":2, "c": 3, "d": 4, "e": 5, "f": 6, "g": 7, "h":8}
 
 ''' TO DO: ADD IMAGES TO THE REPO SO THIS FUNCTION CAN BE CALLED. WILL THROW  UP AN ERROR IF CALLED IN CURRENT STATE '''
 def load_Images():
@@ -33,14 +33,10 @@ def main():
         for e in p.event.get():
             if e.type == p.QUIT:
                 running = False
-            elif e.type == p.MOUSEBUTTONDOWN:
-                location = p.mouse.get_pos()  #Location of mouse
-                # location = p.mouse.get.pos()
-                col = location[0] // Square_Size
-                row = location[1] // Square_Size
-                print("hello")
-                poisiton = input("Enter position: ")
-
+            else:
+                running = True
+        
+        
         draw_Game_State(screen, gs)
         clock.tick(Max_FPS)
         p.display.flip()
