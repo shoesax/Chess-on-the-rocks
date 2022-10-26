@@ -35,8 +35,9 @@ def main():
                 running = False
             else:
                 running = True
+                square_to_move = input("Enter what square you want to move")
         
-        
+
         draw_Game_State(screen, gs)
         clock.tick(Max_FPS)
         p.display.flip()
