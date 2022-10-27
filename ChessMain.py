@@ -1,7 +1,7 @@
+# from curses import KEY_DOWN
+from asyncio.windows_events import NULL
 import pygame as p
 import ChessEngine as engine 
-position = 'A1'
-
 
 p.init()
 WIDTH = HEIGHT = 800
@@ -10,6 +10,7 @@ Square_Size = HEIGHT // DIMENSION
 Max_FPS = 15
 IMAGES = {}
 rank = {"a":1, "b":2, "c": 3, "d": 4, "e": 5, "f": 6, "g": 7, "h":8}
+user_text = ""
 
 ''' TO DO: ADD IMAGES TO THE REPO SO THIS FUNCTION CAN BE CALLED. WILL THROW  UP AN ERROR IF CALLED IN CURRENT STATE '''
 def load_Images():
@@ -33,10 +34,12 @@ def main():
         for e in p.event.get():
             if e.type == p.QUIT:
                 running = False
-            else:
-                running = True
-                square_to_move = input("Enter what square you want to move")
-        
+            elif e.type == p.KEYDOWN:
+                print("key down")
+                while e.type != p.K_BACKSPACE:
+                    user_text += e.unicode
+                user_text = user_text[:-1]
+                print(user_text)
 
         draw_Game_State(screen, gs)
         clock.tick(Max_FPS)
