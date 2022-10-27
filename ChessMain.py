@@ -44,8 +44,8 @@ def main():
                     char_count = 0
                     square_to_move = user_text[0:2]
                     square_to_move_to = user_text[2:4] 
-                    
-                    update_Board(square_to_move, square_to_move_to)
+
+                    update_Board(square_to_move, square_to_move_to, gs.board)
 
                     square_to_move = ""
                     square_to_move_to = ""
@@ -77,8 +77,11 @@ def draw_Pieces(screen,board):
             if piece != "--":
                 screen.blit(IMAGES[piece], p.Rect(col*Square_Size, row*Square_Size, Square_Size, Square_Size))
 
-def update_Board(square_One, square_Two):
+def update_Board(square_One, square_Two, board):
 
+    board[(rank[str(square_Two[0])])][int(square_Two[1])] = board[(rank[str(square_One[0])])][int(square_One[1])] 
+    board[(rank[str(square_One[0])])][int(square_One[1])] = "--"
+    
 
 if __name__ == "__main__":
     main()
