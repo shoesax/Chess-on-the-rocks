@@ -10,7 +10,7 @@ Square_Size = HEIGHT // DIMENSION
 Max_FPS = 15
 IMAGES = {}
 rank = {"a":1, "b":2, "c": 3, "d": 4, "e": 5, "f": 6, "g": 7, "h":8}
-user_text = ""
+
 
 ''' TO DO: ADD IMAGES TO THE REPO SO THIS FUNCTION CAN BE CALLED. WILL THROW  UP AN ERROR IF CALLED IN CURRENT STATE '''
 def load_Images():
@@ -30,16 +30,27 @@ def main():
     square_selected= () #No square is selected originally. Keeps track of users last click. Replace with arduino input code
 
     running = True
+    user_text = ""
+    char_count = 0
     while running:
         for e in p.event.get():
             if e.type == p.QUIT:
                 running = False
             elif e.type == p.KEYDOWN:
-                print("key down")
-                while e.type != p.K_BACKSPACE:
+                if char_count < 4:
                     user_text += e.unicode
-                user_text = user_text[:-1]
-                print(user_text)
+                    char_count += 1
+                else:
+                    char_count = 0
+                    square_to_move = user_text[0:2]
+                    square_to_move_to = user_text[2:4] 
+                    
+                    update_Board(square_to_move, square_to_move_to)
+
+                    square_to_move = ""
+                    square_to_move_to = ""
+        
+
 
         draw_Game_State(screen, gs)
         clock.tick(Max_FPS)
@@ -65,6 +76,9 @@ def draw_Pieces(screen,board):
             piece = board[row][col]
             if piece != "--":
                 screen.blit(IMAGES[piece], p.Rect(col*Square_Size, row*Square_Size, Square_Size, Square_Size))
+
+def update_Board(square_One, square_Two):
+
 
 if __name__ == "__main__":
     main()
