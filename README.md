@@ -1,2 +1,2 @@
-gosha doesnt sucknt
+kobe better
 
