@@ -1,8 +1,9 @@
 import chess
-import chess.uci  #isn't supported anymore, use chess.engine instead  https://github.com/niklasf/python-chess/discussions/848
+#import chess.uci  isn't supported anymore, use chess.engine instead  https://github.com/niklasf/python-chess/discussions/848
 import numpy as np
 import stockfish
 from Board import Board
+import chess.engine
 
 
 class ChessEng:
@@ -18,8 +19,8 @@ class ChessEng:
         '''
 
         self.engBoard = chess.Board()
-        self.engine = chess.uci.popen_engine("/usr/games/stockfish")
-        self.engine.uci()
+        self.engine = chess.chess.engine.SimpleEngine.popen_uci("/usr/games/stockfish") #change directory
+        self.engine.engine()
         print(self.engBoard)
 
     def updateMove(self, move):
@@ -39,6 +40,7 @@ class ChessEng:
             print(self.engBoard)
             return 0
 
+#Not necessry as user is making a move themselves, need to create user input function that also writes to a txt file
     def feedToAI(self):
         '''
         Gets the bestmove from the stockfish engine. Writes move choice to Game.txt file
