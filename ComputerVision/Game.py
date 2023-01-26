@@ -5,7 +5,7 @@ import chess
 from ChessEng import ChessEng
 from board_Recognition import board_Recognition
 from Board import Board
-from Camera import Camera
+from Camera import Capture
 
 
 class Game:
@@ -28,7 +28,7 @@ class Game:
         '''
         Initializes objects with which the Game will interact
         '''
-        self.camera = Camera()
+        self.camera = Capture()
         self.chessEngine = ChessEng()
         self.board = 0
         self.current = 0
