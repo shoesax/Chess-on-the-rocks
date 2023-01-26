@@ -1,5 +1,7 @@
+import cv2
 import cv2 as cv
 import imutils
+import time
 import os
 
 
@@ -20,27 +22,30 @@ class Capture:
             print(f'"{image_dir_path}" Directory already exists.')
 
 
-        cap = cv.VideoCapture(0)
+        cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+        time.sleep(1) #warms up camera
 
         while True:
             _,frame = cap.read()
 
-            #image, board_detected = detect_checker_board(frame, gray, criteria, CHESS_BOARD_DIM)
-            #frame = frame.array
-            #resized = imutils.resize(frame, height = 400, width = 400)
-            cv.imshow("frame", frame)
-            #cv.imshow("copyFrame", copyFrame)
+            #processing
+            resized = imutils.resize(frame, width=400, height=400)
+            gray = cv2.cvtColor(resized, cv2.COLOR_RGB2GRAY)
+            adaptiveThresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 125, 1)
+
+
+            cv.imshow("frame", adaptiveThresh)
+
 
             key = cv.waitKey(1)
 
             if key == ord("q"):
-                break
+                 break
             if key == ord("s"):
-                cv.imwrite(f"{image_dir_path}/image{n}.png", frame)
-
                 print(f"saved image number {n}")
                 n += 1  # incrementing the image counter
         cap.release()
         cv.destroyAllWindows()
 
-        print("Total saved Images:", n)
+
+

@@ -4,17 +4,6 @@
     <list default="true" id="12822873-60e5-4468-86b3-1a9ae5757021" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/Camera.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChessEng.py" beforeDir="false" afterPath="$PROJECT_DIR$/ChessEng.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Board_frame_0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Board_frame_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Board_frame_3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Board_frame_4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Board_frame_5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Board_frame_6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Board_frame_7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Board_frame_8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/image0.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
