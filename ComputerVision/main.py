@@ -1,6 +1,6 @@
 import cv2
 import Camera
-import ImageProcessing
+import Processing
 cam = Camera.Capture()
 x=1
 while(x):
@@ -10,7 +10,7 @@ while(x):
     #Reading image from folder
     image = cv2.imread("images\image.jpg")
     #Applying processing
-    image = ImageProcessing.processImage(image)
+    image = Processing.processImage(image)
     #Displaying image, press any key to quit
     cv2.imshow("Board", image)
     cv2.waitKey(0)
