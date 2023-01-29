@@ -1,13 +1,19 @@
 import cv2
 import Camera
-import board_Recognition
-c1 = Camera.Capture()
-
+import ImageProcessing
+cam = Camera.Capture()
 x=1
 while(x):
-    key = cv2.waitKey(1)
     print("Starting  camera")
-    c1.takePicture()
+    #Take picture by pressing s, press q to quit
+    cam.takePicture()
+    #Reading image from folder
+    image = cv2.imread("images\image.jpg")
+    #Applying processing
+    image = ImageProcessing.processImage(image)
+    #Displaying image, press any key to quit
+    cv2.imshow("Board", image)
+    cv2.waitKey(0)
     x=0
 
 
