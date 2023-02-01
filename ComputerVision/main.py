@@ -8,12 +8,10 @@ while(x):
     #cam.takePicture()
 
     #Reading image from folder
-    image = cv2.imread("images\image.jpg")
-    original = cv2.imread("images\image.jpg")
+    image = cv2.imread("images\image3.jpg")
 
     #Applying processing
-    image = Processing.processImage(image) # thresholding
-    #image = Processing.initialize_mask(image,original) #contouring
+    image = Processing.processImage(image) # thresholding and contouring to isolate board
 
     #Displaying image, press any key to quit
     cv2.imshow("Board", image)

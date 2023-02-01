@@ -1,0 +1,11 @@
+Citations Liunks:
+
+CVChess: https://github.com/rjgoodloe/ESE205-CVChess/
+
+Shi Tomasi corner detection: https://github.com/efr2000020/GoGo_The_Chess_Bot/tree/master/python_files_v1
+
+Sam Donald Stonewall: https://github.com/notsamdonald/Stonewall/blob/master/main.py
+
+Jay Hack CV Chess: https://github.com/jayhack/CVChess
+
+
