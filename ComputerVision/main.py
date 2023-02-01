@@ -13,7 +13,7 @@ while(x):
 
     #Applying processing
     image = Processing.processImage(image) # thresholding
-    image = Processing.initialize_mask(image,original) #contouring
+    #image = Processing.initialize_mask(image,original) #contouring
 
     #Displaying image, press any key to quit
     cv2.imshow("Board", image)
