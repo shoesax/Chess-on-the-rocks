@@ -17,6 +17,18 @@ def processImage(image):
     frame_BGR_cropped = my_functions.crop_image(frame_BGR_resized, largest_contoured_polygon)
     return frame_BGR_cropped
 
+def findEdges(image):
+
+    # Find edges
+    edges = cv2.Canny(image, 100, 200, None, 3)
+    # Convert edges image to grayscale
+    colorEdges = cv2.cvtColor(edges, cv2.COLOR_GRAY2BGR)
+
+    return  colorEdges
+
+
+
+
 
 
 

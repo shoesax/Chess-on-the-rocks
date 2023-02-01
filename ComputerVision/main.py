@@ -12,6 +12,7 @@ while(x):
 
     #Applying processing
     image = Processing.processImage(image) # thresholding and contouring to isolate board
+    image = Processing.findEdges(image) #canny edge detection
 
     #Displaying image, press any key to quit
     cv2.imshow("Board", image)
