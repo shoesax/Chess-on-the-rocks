@@ -1,5 +1,4 @@
 import math
-
 import cv2
 import numpy as np
 import Line
@@ -122,33 +121,4 @@ def findSquares(corners, colorEdges):
 
     return Squares, colorEdges
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # #following tutorial https://www.youtube.com/watch?v=JOxebvuRpyo
-    # #create canvas
-    # canvas = np.zeros(img.shape, np.uint8)
-    # canvas.fill(255)
-    #
-    # #create background mask
-    # mask = np.zeros(img.shape, np.uint8)
-    # mask.fill(255)
-    #
-    # #get contours
-    # contours_draw, hierarchy  = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-    #
-    # return canvas
 
