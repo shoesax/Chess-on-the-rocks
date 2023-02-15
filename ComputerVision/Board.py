@@ -170,14 +170,6 @@ class Board:
         squareOne = largestSquare
         squareTwo = secondLargestSquare
 
-        if debug:
-            squareOne.draw(copy, (255, 0, 0), 2)
-            squareTwo.draw(copy, (255, 0, 0), 2)
-            cv2.imshow("previous", previous)
-            cv2.imshow("identified", copy)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
-
         # get colors for each square from each photo
         oneCurr = squareOne.roiColor(current)
         twoCurr = squareTwo.roiColor(current)

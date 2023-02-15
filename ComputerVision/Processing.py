@@ -121,4 +121,3 @@ def findSquares(corners, colorEdges):
 
     return Squares, colorEdges
 
-

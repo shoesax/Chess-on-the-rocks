@@ -32,7 +32,7 @@ class Capture:
             if key == ord("q"):
                  break
             if key == ord("s"):
-                img_name = "move{}.jpg".format(img_counter) # add _{} after image to format differently from each other
+                img_name = "game{}.jpg".format(img_counter) # add _{} after image to format differently from each other
                 cv2.imwrite(os.path.join(path, img_name), frame)
                 print(f"saved image number {img_counter}")
                 img_counter += 1  # incrementing the image counter
