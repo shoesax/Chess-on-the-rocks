@@ -13,9 +13,9 @@ class Board:
     def __init__(self, squares):
 
         self.squares = squares
-        # self.boardMatrix = []
-        # self.promotion = 'q'
-        # self.promo = False
+        self.boardMatrix = []
+        self.promotion = 'q'
+        self.promo = False
         self.move = "e2e4"
 
     def draw(self, image):
@@ -25,6 +25,26 @@ class Board:
         for square in self.squares:
             square.draw(image, (0, 0, 255))
             square.classify(image)
+
+    def assignState(self):
+        """
+        Assigns initial setup states to squares and initializes the Board matrix.
+        """
+        black = ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r']
+        white = ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
+
+        for i in range(8):
+            self.squares[8 * i + 0].state = black[i]
+            self.squares[8 * i + 1].state = 'p'
+            self.squares[8 * i + 2].state = '.'
+            self.squares[8 * i + 3].state = '.'
+            self.squares[8 * i + 4].state = '.'
+            self.squares[8 * i + 5].state = '.'
+            self.squares[8 * i + 6].state = 'P'
+            self.squares[8 * i + 7].state = white[i]
+
+        for square in self.squares:
+            self.boardMatrix.append(square.state)
 
     def determineChanges(self, previous, current):
         '''

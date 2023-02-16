@@ -24,6 +24,7 @@ while(x):
 
     #CREATING BOARD
     myBoard = Movement.Board(squares)
+    myBoard.assignState()
     myBoard.draw(image)
 
     #MOVE IMAGES
@@ -41,6 +42,7 @@ while(x):
     cv2.imshow("curr", current)
     cv2.waitKey(0)
     print(myBoard.determineChanges(previous, current))
+    print(myBoard.boardMatrix)
 
     x=0
 
