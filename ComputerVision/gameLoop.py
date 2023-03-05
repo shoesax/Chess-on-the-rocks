@@ -13,12 +13,21 @@ Square_Size = HEIGHT // DIMENSION
 Max_FPS = 15
 IMAGES = {}
 rank = {"a":1, "b":2, "c": 3, "d": 4, "e": 5, "f": 6, "g": 7, "h":8}
-# screen = p.display.set_mode((WIDTH,HEIGHT))
+screen = p.display.set_mode((WIDTH,HEIGHT))
+time.sleep(1)
+p.quit()
+time.sleep(1)
 gs = engine.GameState()
 
 
 
 game_over = False
+
+def load_Images():
+    
+    list_Pieces = ['wp','wR','wN','wB','wQ','wK','bp','bR','bN','bB','bQ','bK']
+    for piece in list_Pieces:
+        IMAGES[piece] = p.transform.scale(p.image.load("pieceImages/"+piece+".png"), (Square_Size,Square_Size))
 
 def ask_user_for_input():
 
@@ -39,13 +48,47 @@ def software_move(square_one, square_two):
 
 def take_picture():
     print("take picture")
+
+def draw_game_state(screen,gs):
+    draw_board(screen)
+    draw_pieces(screen, gs.board)
+    time.sleep(50)
+    p.quit()
+    time.sleep(50)
+
+def draw_board(screen):
+    colors = [p.Color("white"), p.Color("dark green")]
+    for r in range(DIMENSION):
+        for c in range(DIMENSION):
+           color = colors[ ( (r+c)%2 )] 
+           p.draw.rect(screen,color, p.Rect(c*Square_Size, r*Square_Size, Square_Size, Square_Size) )
+
+def draw_pieces(screen,board):
+    for row in range(DIMENSION):
+        for col in range(DIMENSION):
+            piece = board[row][col]
+            if piece != "--":
+                screen.blit(IMAGES[piece], p.Rect(col*Square_Size, row*Square_Size, Square_Size, Square_Size))
+
+def update_Board(square_One, square_Two, board):
+
+    board[(rank[str(square_Two[0])])][int(square_Two[1])] = board[(rank[str(square_One[0])])][int(square_One[1])] 
+    board[(rank[str(square_One[0])])][int(square_One[1])] = "--"
     
 board_init()
+load_Images()
 
 while(not game_over):
 
+    screen = p.display.set_mode((WIDTH,HEIGHT))
+    draw_game_state(screen, gs)
     starting_square, ending_square = ask_user_for_input()
-    print(starting_square, ending_square)
+    update_Board(starting_square, ending_square, gs.board )
+    screen = p.display.set_mode((WIDTH,HEIGHT))
+    draw_game_state(screen, gs)
+
+
+
     break
 
 
