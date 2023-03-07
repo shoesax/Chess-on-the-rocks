@@ -40,27 +40,15 @@ class ChessEng:
             print(self.engBoard)
             return 0
 
-#Not necessry as user is making a move themselves, need to create user input function that also writes to a txt file
-    # def feedToAI(self):
-    #     '''
-    #     Gets the bestmove from the stockfish engine. Writes move choice to Game.txt file
-    #     '''
-    #
-    #     # giving the CPU the current board position
-    #     self.engine.position(self.engBoard)
-    #
-    #     # Giving the engine 2000ms to produce a move
-    #     response = self.engine.go(movetime=2000)
-    #     bestMove = response[0]
-    #
-    #     # update board
-    #     self.engBoard.push(bestMove)
-    #
-    #     # write move to txt file
-    #     f = open("Game.txt", "a+")
-    #     f.write(bestMove.uci() + "\r\n")
-    #     f.close()
-    #
-    #     print(self.engBoard)
-    #     return bestMove
+    def computerMove(self):
+        '''
+        Gets move from computer player
+        '''
+        bestMove = input("Enter your move:")
+
+        # update board
+        self.engBoard.push(bestMove)
+
+        print(self.engBoard)
+        return bestMove
 
