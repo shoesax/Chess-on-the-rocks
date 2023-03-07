@@ -23,6 +23,9 @@ gs = engine.GameState()
 
 game_over = False
 
+def teardown_board():
+    p.quit()
+
 def load_Images():
     
     list_Pieces = ['wp','wR','wN','wB','wQ','wK','bp','bR','bN','bB','bQ','bK']
@@ -43,8 +46,27 @@ def board_init():
 def hardware_move():
     print("hardware move")
 
-def software_move(square_one, square_two):
+def software_move():
+    running = True
+    sq_selected = ()
+    player_clicks = [] #will contain two sqSelected
+
+    while(running):
+        for e in p.event.get():
+            if e.type == e.QUIT():
+                running = False
+            elif e.type == p.MOUSEBUTTONDOWN:
+                location = p.mouse.get_pos()
+                col = location[0] // Square_Size
+                row = location[1] // Square_Size
+                sq_selected = (row, col)
+                player_clicks.append(sq_selected)
+
+                if len(player_clicks) == 2:
+                    move = engine.Move(player_clicks[0], player_clicks[1], gs.board)
+                    sq_selected = ()
     print("software move")
+
 
 def take_picture():
     print("take picture")
@@ -52,9 +74,6 @@ def take_picture():
 def draw_game_state(screen,gs):
     draw_board(screen)
     draw_pieces(screen, gs.board)
-    time.sleep(50)
-    p.quit()
-    time.sleep(50)
 
 def draw_board(screen):
     colors = [p.Color("white"), p.Color("dark green")]
@@ -75,20 +94,15 @@ def update_Board(square_One, square_Two, board):
     board[(rank[str(square_Two[0])])][int(square_Two[1])] = board[(rank[str(square_One[0])])][int(square_One[1])] 
     board[(rank[str(square_One[0])])][int(square_One[1])] = "--"
     
-board_init()
-load_Images()
+# board_init()
+# load_Images()
 
-while(not game_over):
-
-    screen = p.display.set_mode((WIDTH,HEIGHT))
-    draw_game_state(screen, gs)
-    starting_square, ending_square = ask_user_for_input()
-    update_Board(starting_square, ending_square, gs.board )
-    screen = p.display.set_mode((WIDTH,HEIGHT))
-    draw_game_state(screen, gs)
+def main():
+    
+    board_init()
+    load_Images()
 
 
 
-    break
-
-
+if __name__ == "__main__":
+    main()
