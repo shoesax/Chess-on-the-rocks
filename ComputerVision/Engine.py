@@ -48,13 +48,13 @@ class ChessEng:
         userMove = input("Enter the PC user move")
 
         # update board
-        self.engBoard.push(userMove)
-
-        # write move to txt file
-        f = open("Game.txt", "a+")
-        f.write(userMove.uci() + "\r\n")
-        f.close()
-
-        print(self.engBoard)
+        # self.engBoard.push(userMove)
+        #
+        # # write move to txt file
+        # f = open("Game.txt", "a+")
+        # f.write(userMove.uci() + "\r\n")
+        # f.close()
+        #
+        # print(self.engBoard)
         return userMove
 

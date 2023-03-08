@@ -2,14 +2,15 @@ import cv2
 import Camera
 import Processing
 import Movement
+import chess
 cam = Camera.Capture()
 x=1
 while(x):
     #Take picture by pressing s, press q to quit
-    #cam.takePicture()
+    # cam.takePicture()
 
     #Reading image from folder
-    image = cv2.imread("images\move\move2.jpg")
+    image = cv2.imread("images\gametest2\move.jpg")
 
     #Board Initialization Processing
     print("Initializing board")
@@ -27,22 +28,43 @@ while(x):
     myBoard.assignState()
     myBoard.draw(image)
 
-    #MOVE IMAGES
-    previous = cv2.imread("images\move\move0.jpg")
-    previous = Processing.processImage(previous)
-    previous = Processing.findEdges(previous)[0]
+    #CREATING ENGINE BOARD
+    engboard = chess.Board()
 
-    current = cv2.imread("images\move\move1.jpg")
-    current = Processing.processImage(current)
-    current = Processing.findEdges(current)[0]
+    #STUFF TO SHOW
 
-    #MOVE OUTPUT
-    cv2.imshow("Board", board)
-    cv2.imshow("prev", previous)
-    cv2.imshow("curr", current)
-    cv2.waitKey(0)
-    print(myBoard.determineChanges(previous, current))
-    print(myBoard.boardMatrix)
+    # cv2.imshow("Board", board)
+    # cv2.imshow("prev", previous)
+    # cv2.imshow("curr", current)
+    # cv2.waitKey(0)
+    p=0
+    c=1
+    while(True):
+        #MOVE IMAGES
+        previous = cv2.imread("images\gametest2\move{}.jpg".format(p))
+        previous = Processing.processImage(previous)
+        previous = Processing.findEdges(previous)[0]
+
+        current = cv2.imread("images\gametest2\move{}.jpg".format(c))
+        current = Processing.processImage(current)
+        current = Processing.findEdges(current)[0]
+
+        print("Hardware Move:" + myBoard.determineChanges(previous, current))
+        engboard.push_san(myBoard.determineChanges(previous, current))
+        print(engboard)
+        if(engboard.is_checkmate() == True):
+            print("Checkmate! White Wins!")
+            break
+
+        userMove = input("Enter the PC user move: ")
+        engboard.push_san(userMove)
+        print(engboard)
+        if (engboard.is_checkmate() == True):
+            print("Checkmate! Black Wins!")
+            break
+
+        p += 1
+        c += 1
 
     x=0
 
