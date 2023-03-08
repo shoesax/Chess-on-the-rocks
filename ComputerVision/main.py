@@ -7,10 +7,10 @@ cam = Camera.Capture()
 x=1
 while(x):
     #Take picture by pressing s, press q to quit
-    #cam.takePicture()
+    # cam.takePicture()
 
     #Reading image from folder
-    image = cv2.imread("images\gametest\move.jpg")
+    image = cv2.imread("images\gametest2\move.jpg")
 
     #Board Initialization Processing
     print("Initializing board")
@@ -32,6 +32,7 @@ while(x):
     engboard = chess.Board()
 
     #STUFF TO SHOW
+
     # cv2.imshow("Board", board)
     # cv2.imshow("prev", previous)
     # cv2.imshow("curr", current)
@@ -40,11 +41,11 @@ while(x):
     c=1
     while(True):
         #MOVE IMAGES
-        previous = cv2.imread("images\gametest\move{}.jpg".format(p))
+        previous = cv2.imread("images\gametest2\move{}.jpg".format(p))
         previous = Processing.processImage(previous)
         previous = Processing.findEdges(previous)[0]
 
-        current = cv2.imread("images\gametest\move{}.jpg".format(c))
+        current = cv2.imread("images\gametest2\move{}.jpg".format(c))
         current = Processing.processImage(current)
         current = Processing.findEdges(current)[0]
 
