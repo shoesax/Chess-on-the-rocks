@@ -39,5 +39,65 @@ class Capture:
         cap.release()
         cv.destroyAllWindows()
 
+    def boardPicture(self):
+        # checking if  images directory exists, if not then create images directory
+        path = "images\mygame"
+
+        CHECK_DIR = os.path.isdir(path)
+        # if directory does not exist create
+        if not CHECK_DIR:
+            os.makedirs(path)
+            print(f'"{path}" Directory is created')
+        else:
+            print(f'"{path}" Directory already exists.')
 
 
+        cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+        time.sleep(1) #warms up camera
+
+        while True:
+            _,frame = cap.read()
+            cv.imshow("EmptyBoardPic", frame)
+
+            key = cv.waitKey(1)
+
+            if key == ord("q"):
+                 break
+            if key == ord("s"):
+                img_name = "move.jpg"
+                cv2.imwrite(os.path.join(path, img_name), frame)
+                print("Empty board picture saved.")
+        cap.release()
+        cv.destroyAllWindows()
+
+    def movePicture(self, curr):
+        img_counter = curr  # image_counter
+        # checking if  images directory exists, if not then create images directory
+        path = "images\mygame"
+
+        CHECK_DIR = os.path.isdir(path)
+        # if directory does not exist create
+        if not CHECK_DIR:
+            os.makedirs(path)
+            print(f'"{path}" Directory is created')
+        else:
+            print(f'"{path}" Directory already exists.')
+
+
+        cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+        time.sleep(1) #warms up camera
+
+        while True:
+            _,frame = cap.read()
+            cv.imshow("MovePic", frame)
+
+            key = cv.waitKey(1)
+
+            if key == ord("q"):
+                 break
+            if key == ord("s"):
+                img_name = "move{}.jpg".format(img_counter)
+                cv2.imwrite(os.path.join(path, img_name), frame)
+                print("Move picture saved. ")
+        cap.release()
+        cv.destroyAllWindows()

@@ -6,7 +6,7 @@ import chess
 cam = Camera.Capture()
 
 #Take picture by pressing s, press q to quit
-# cam.takePicture()
+cam.takePicture()
 
 #Reading image from folder
 image = cv2.imread("images\gametest2\move.jpg")
@@ -31,11 +31,9 @@ myBoard.draw(image)
 engboard = chess.Board()
 
 #STUFF TO SHOW
-
 # cv2.imshow("Board", board)
-# cv2.imshow("prev", previous)
-# cv2.imshow("curr", current)
 # cv2.waitKey(0)
+
 p=0
 c=1
 while(True):
@@ -82,7 +80,6 @@ while(True):
 
     p += 1
     c += 1
-
 
 
 
