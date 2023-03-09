@@ -21,10 +21,10 @@ class GameState():
         self.board[move.end_row][move.end_col] = move.piece_moved
         self.moveLog.append(move)
         self.whiteToMove = not self.whiteToMove
-        
+
 class Move():
 
-    ranks_to_rows = { "1": 7, "2": 6, "3": 5, "4": 4, "5": 3, "6": 2, "7": 1, "8":0}
+    ranks_to_rows = { "1": 7, "2": 6, "3": 5, "4": 4, "5": 3, "6": 2, "7": 1, "8"   :0}
     rows_to_ranks = { v: k for k, v in ranks_to_rows.items() }
 
     files_to_cols = {"a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f":5, "g": 6, "h": 7}
@@ -42,5 +42,3 @@ class Move():
 
     def getRankFile(self, r, c):
         return self.cols_to_files[c] + self.rows_to_ranks[r]
-
-

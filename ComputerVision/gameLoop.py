@@ -13,11 +13,11 @@ Square_Size = HEIGHT // DIMENSION
 Max_FPS = 15
 IMAGES = {}
 rank = {"a":1, "b":2, "c": 3, "d": 4, "e": 5, "f": 6, "g": 7, "h":8}
-screen = p.display.set_mode((WIDTH,HEIGHT))
-time.sleep(1)
-p.quit()
-time.sleep(1)
-gs = engine.GameState()
+# screen = p.display.set_mode((WIDTH,HEIGHT))
+# time.sleep(1)
+# p.quit()
+# time.sleep(1)
+# gs = engine.GameState()
 
 
 
@@ -89,18 +89,41 @@ def draw_pieces(screen,board):
             if piece != "--":
                 screen.blit(IMAGES[piece], p.Rect(col*Square_Size, row*Square_Size, Square_Size, Square_Size))
 
-def update_Board(square_One, square_Two, board):
+def update_Board(square_One, square_Two, gs):
 
-    board[(rank[str(square_Two[0])])][int(square_Two[1])] = board[(rank[str(square_One[0])])][int(square_One[1])] 
-    board[(rank[str(square_One[0])])][int(square_One[1])] = "--"
+    # board = gs.board
+    print_board(gs.board)
+    gs.board[(rank[str(square_Two[0])])][int(square_Two[1])] = gs.board[(rank[str(square_One[0])])][int(square_One[1])] 
+    print(gs.board[(rank[str(square_Two[0])])][int(square_Two[1])])
+    gs.board[(rank[str(square_One[0])])][int(square_One[1])] = "--"
+    print_board(gs.board)
+
+def print_board(board):
+    for i in board:
+        print(i)
+
+def software_move_beta(sq_one, sq_two, board):
+    pass
     
 # board_init()
 # load_Images()
 
 def main():
-    
-    board_init()
-    load_Images()
+
+    gs = engine.GameState()
+    sq_one = input("enter starting square: ")
+    sq_two = input("enter ending square: ")
+    mov = engine.Move(sq_one, sq_two, gs.board)
+    print_board(gs.board)
+
+
+
+
+
+
+
+
+
 
 
 
