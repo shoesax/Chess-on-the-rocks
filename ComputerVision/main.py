@@ -8,8 +8,11 @@ cam = Camera.Capture()
 #Take picture by pressing s, press q to quit
 # cam.takePicture()
 
+#TAKING EMPTY BOARD PICTURE
+cam.boardPicture()
+
 #Reading image from folder
-image = cv2.imread("images\gametest2\move.jpg")
+image = cv2.imread("images\mygame\move.jpg")
 
 #Board Initialization Processing
 print("Initializing board")
@@ -33,27 +36,28 @@ engboard = chess.Board()
 #STUFF TO SHOW
 
 # cv2.imshow("Board", board)
-# cv2.imshow("prev", previous)
-# cv2.imshow("curr", current)
 # cv2.waitKey(0)
-p=0
+
+#TAKING INITIAL BOARD STATE PICTURE
+print("Take a picture of the initial board setup.")
+cam.movePicture(0)
+previous = cv2.imread("images\mygame\move0.jpg")
+previous = Processing.processImage(previous)
+previous = Processing.findEdges(previous)[0]
+
 c=1
 while(True):
-    #MOVE IMAGES
-    previous = cv2.imread("images\gametest2\move{}.jpg".format(p))
-    previous = Processing.processImage(previous)
-    previous = Processing.findEdges(previous)[0]
-
-    current = cv2.imread("images\gametest2\move{}.jpg".format(c))
-    current = Processing.processImage(current)
-    current = Processing.findEdges(current)[0]
-
     #HARDWARE MOVE
     while (True):
+        cam.movePicture(c)
+        current = cv2.imread("images\mygame\move{}.jpg".format(c))
+        current = Processing.processImage(current)
+        current = Processing.findEdges(current)[0]
         if (chess.Move.from_uci(myBoard.determineChanges(previous, current)) not in engboard.legal_moves):
-            print("Move is not valid.")
+            print(myBoard.determineChanges(previous, current)+"Move is not valid, retake picture.")
         else:
             break
+
     print("Hardware Move:" + myBoard.determineChanges(previous, current))
     engboard.push_san(myBoard.determineChanges(previous, current))
     print(engboard)
@@ -80,7 +84,7 @@ while(True):
         print("Stalemate!")
         break
 
-    p += 1
+    previous = current
     c += 1
 
 

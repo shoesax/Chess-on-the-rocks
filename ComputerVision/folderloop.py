@@ -6,7 +6,7 @@ import chess
 cam = Camera.Capture()
 
 #Take picture by pressing s, press q to quit
-cam.takePicture()
+# cam.takePicture()
 
 #Reading image from folder
 image = cv2.imread("images\gametest2\move.jpg")

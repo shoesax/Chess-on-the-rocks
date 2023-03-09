@@ -75,15 +75,6 @@ class Capture:
         # checking if  images directory exists, if not then create images directory
         path = "images\mygame"
 
-        CHECK_DIR = os.path.isdir(path)
-        # if directory does not exist create
-        if not CHECK_DIR:
-            os.makedirs(path)
-            print(f'"{path}" Directory is created')
-        else:
-            print(f'"{path}" Directory already exists.')
-
-
         cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
         time.sleep(1) #warms up camera
 
@@ -92,12 +83,10 @@ class Capture:
             cv.imshow("MovePic", frame)
 
             key = cv.waitKey(1)
-
-            if key == ord("q"):
-                 break
             if key == ord("s"):
                 img_name = "move{}.jpg".format(img_counter)
                 cv2.imwrite(os.path.join(path, img_name), frame)
                 print("Move picture saved. ")
+                break
         cap.release()
         cv.destroyAllWindows()
