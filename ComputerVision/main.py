@@ -49,18 +49,36 @@ while(x):
         current = Processing.processImage(current)
         current = Processing.findEdges(current)[0]
 
+        #HARDWARE MOVE
+        while (True):
+            if (chess.Move.from_uci(myBoard.determineChanges(previous, current)) not in engboard.legal_moves):
+                print("Move is not valid.")
+            else:
+                break
         print("Hardware Move:" + myBoard.determineChanges(previous, current))
         engboard.push_san(myBoard.determineChanges(previous, current))
         print(engboard)
         if(engboard.is_checkmate() == True):
             print("Checkmate! White Wins!")
             break
+        if(engboard.is_stalemate()==True):
+            print("Stalemate!")
+            break
 
-        userMove = input("Enter the PC user move: ")
+        #PC MOVE
+        while(True):
+            userMove = input("Enter the PC user move: ")
+            if (chess.Move.from_uci(userMove) not in engboard.legal_moves):
+                print("Move is not valid.")
+            else:
+                break
         engboard.push_san(userMove)
         print(engboard)
         if (engboard.is_checkmate() == True):
             print("Checkmate! Black Wins!")
+            break
+        if (engboard.is_stalemate() == True):
+            print("Stalemate!")
             break
 
         p += 1

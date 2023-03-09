@@ -3,21 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="12822873-60e5-4468-86b3-1a9ae5757021" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/gameblack/game0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/gameblack/game1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/gameblack/game2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/gameblack/game3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/gameblack/game4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/gameblack/game5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/gameblack/game6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/gameblack/game7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/gamewhite/game0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/gamewhite/game1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/gamewhite/game2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/gamewhite/game3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/gamewhite/game4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imageOG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imagephysical.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
