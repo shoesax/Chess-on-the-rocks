@@ -34,7 +34,7 @@ myBoard.draw(image)
 engboard = chess.Board()
 
 #STUFF TO SHOW
-
+#
 # cv2.imshow("Board", board)
 # cv2.waitKey(0)
 
@@ -68,15 +68,24 @@ while(True):
         print("Stalemate!")
         break
 
+
     #PC MOVE
     while(True):
         userMove = input("Enter the PC user move: ")
-        if (chess.Move.from_uci(userMove) not in engboard.legal_moves):
+        ucimove = chess.Move.from_uci(userMove)
+        if (ucimove not in engboard.legal_moves):
             print("Move is not valid.")
         else:
             break
+
+    if (engboard.is_capture(ucimove)):
+        print("Black has captured a piece on " + userMove[2:] + ". Please take a picture of the current state.")
+        cam.movePicture(c)
+        current = cv2.imread("images\mygame\move{}.jpg".format(c))
+
     engboard.push_san(userMove)
     print(engboard)
+
     if (engboard.is_checkmate() == True):
         print("Checkmate! Black Wins!")
         break

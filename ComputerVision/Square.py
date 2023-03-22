@@ -25,7 +25,7 @@ class Square:
 
 		# ROI for image differencing
 		self.roi = (cx, cy)
-		self.radius = 7
+		self.radius = 10
 
 		self.emptyColor = self.roiColor(image)
 
