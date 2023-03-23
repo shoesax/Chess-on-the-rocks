@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12822873-60e5-4468-86b3-1a9ae5757021" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/capturetest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Square.py" beforeDir="false" afterPath="$PROJECT_DIR$/Square.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/mygame/move.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/mygame/move.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/mygame/move0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/mygame/move0.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/mygame/move1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/mygame/move1.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/mygame/move2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/mygame/move2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/mygame/move3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/mygame/move3.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/mygame/move4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/mygame/move4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/mygame/move5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/mygame/move5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/mygame/move6.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +45,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Python.capturetest">
+  <component name="RunManager" selected="Python.main">
     <configuration name="Camera" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ComputerVision" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -153,8 +153,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.capturetest" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.capturetest" />
         <item itemvalue="Python.folderloop" />
         <item itemvalue="Python.Camera" />
         <item itemvalue="Python.OOPGUI" />

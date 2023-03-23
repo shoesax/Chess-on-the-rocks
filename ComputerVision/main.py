@@ -78,13 +78,12 @@ while(True):
         else:
             break
 
-    if (engboard.is_capture(ucimove)):
+    if (engboard.is_capture(ucimove) or engboard.is_en_passant(ucimove)):
         print("Black has captured a piece on " + userMove[2:] + ". Please take a picture of the current state.")
         cam.movePicture(c)
         current = cv2.imread("images\mygame\move{}.jpg".format(c))
-
-    engboard.push_san(userMove)
-    print(engboard)
+        current = Processing.processImage(current)
+        current = Processing.findEdges(current)[0]
 
     if (engboard.is_checkmate() == True):
         print("Checkmate! Black Wins!")
@@ -92,6 +91,8 @@ while(True):
     if (engboard.is_stalemate() == True):
         print("Stalemate!")
         break
+    engboard.push_san(userMove)
+    print(engboard)
 
     previous = current
     c += 1
