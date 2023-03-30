@@ -10,6 +10,8 @@ import time
 MAX_FPS = 15
 
 gs = engine.GameState()
+cam = Camera.Capture()
+
 
 main_loop = True
 
@@ -56,7 +58,7 @@ def draw_pieces(screen, board):
         for col in range(DIMENSION):
             piece = board[row][col]
             if (piece != "--"):
-                if( piece[0] == "b"):   
+                if( piece[0] == "w"):   
                     screen.blit(IMAGES[piece], p.Rect(col*Square_Size, row*Square_Size, Square_Size, Square_Size))
 
 def load_Images():
@@ -70,19 +72,15 @@ load_Images()
 
 while(main_loop):
 
-    software_move = True
-    #Look for software move
-    while(software_move):
-        user_move = input("Enter the PC user move: ")
-        first_move, second_move = map_move(user_move)
-        gs.board[int(second_move[1])][int(second_move[0])] = gs.board[int(first_move[1])][int(first_move[0])]
-        gs.board[int(first_move[1])][int(first_move[0])] = "--"
-        print_board(gs.board)
+    user_move = input("Enter the PC user move: ")
+    first_move, second_move = map_move(user_move)
+    gs.board[int(second_move[1])][int(second_move[0])] = gs.board[int(first_move[1])][int(first_move[0])]
+    gs.board[int(first_move[1])][int(first_move[0])] = "--"
+    print_board(gs.board)
                                     
-        software_move = False
-
     running = True
     screen = p.display.set_mode((WIDTH,HEIGHT))
+    print(type(screen))
     clock = p.time.Clock()
     while(running):
         
@@ -92,14 +90,25 @@ while(main_loop):
             if event.type == p.QUIT:
                 p.quit()
                 running = False
-
-        # screen = p.display.set_mode((WIDTH,HEIGHT))
-        # draw_Board(screen)
        
         if(running):
             draw_Board(screen)
             draw_pieces(screen,gs.board)
             clock.tick(MAX_FPS)
             p.display.flip()
+            cam.takePicture()       
 
+    hardware_move = True
+
+    while(hardware_move):
+
+        for event in p.event.get():
+            if event.type == p.QUIT:
+                p.quit()
+                running = False
+
+        
+        if(hardware_move):
+            draw_Board(screen)
+            
     
