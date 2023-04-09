@@ -37,12 +37,12 @@ def draw_Board(screen):
            color = colors[ ( (r+c)%2 )] 
            pygame.draw.rect(screen,color, pygame.Rect(c*Square_Size, r*Square_Size, Square_Size, Square_Size))
 
-def draw_pieces(screen,board):
-    for row in range(DIMENSION):
-        for col in range(DIMENSION):
-            piece = board[row][col]
-            if piece != "--":
-                screen.blit(IMAGES[piece], pygame.Rect(col*Square_Size, row*Square_Size, Square_Size, Square_Size))
+# def draw_pieces(screen,board):
+#     for row in range(DIMENSION):
+#         for col in range(DIMENSION):
+#             piece = board[row][col]
+#             if piece != "--":
+#                 screen.blit(IMAGES[piece], pygame.Rect(col*Square_Size, row*Square_Size, Square_Size, Square_Size))
 
 def draw_pieces(screen, board):
     for row in range(DIMENSION):
@@ -60,9 +60,9 @@ def load_Images():
 
 def draw_software_board(move):
 
-    # first_move, second_move = map_move(move)
-    # gs.board[int(second_move[1])][int(second_move[0])] = gs.board[int(first_move[1])][int(first_move[0])]
-    # gs.board[int(first_move[1])][int(first_move[0])] = "--"
+    first_move, second_move = map_move(move)
+    gs.board[int(second_move[1])][int(second_move[0])] = gs.board[int(first_move[1])][int(first_move[0])]
+    gs.board[int(first_move[1])][int(first_move[0])] = "--"
 
     running = True
     screen = pygame.display.set_mode((WIDTH,HEIGHT))

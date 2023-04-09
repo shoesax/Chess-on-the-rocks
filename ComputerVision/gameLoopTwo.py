@@ -80,8 +80,8 @@ while(main_loop):
                                     
     running = True
     screen = p.display.set_mode((WIDTH,HEIGHT))
-    print(type(screen))
-    clock = p.time.Clock()
+    # print(type(screen))
+    # clock = p.time.Clock()
     while(running):
         
         # print("hello")
