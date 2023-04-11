@@ -212,10 +212,23 @@ while(True):
 
     if (engboard.is_capture(ucimove) or engboard.is_en_passant(ucimove)):
         print("Black has captured a piece on " + userMove[2:] + ". Please take a picture of the current state.")
-        cam.movePicture(c)
-        current = cv2.imread("images\mygame\move{}.jpg".format(c))
-        current = Processing.processImage(current)
-        current = Processing.findEdges(current)[0]
+        draw_software_board(userMove)
+        running4 = True
+        p.init()
+        screen = p.display.set_mode((WIDTH,HEIGHT))
+        while(running4):
+            for event in p.event.get():
+                if event.type == p.QUIT:
+                    p.quit()
+                    running4 = False
+
+            if(running4):
+                draw_Board(screen)
+                p.display.flip()
+                cam.movePicture(c)
+                current = cv2.imread("images\mygame\move{}.jpg".format(c))
+                current = Processing.processImage(current)
+                current = Processing.findEdges(current)[0]
 
     if (engboard.is_checkmate() == True):
         print("Checkmate! Black Wins!")
