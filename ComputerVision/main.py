@@ -14,7 +14,7 @@ cam = Camera.Capture()
 clock = p.time.Clock()
 gs = engine.GameState()
 
-WIDTH = 1000
+WIDTH = 800
 HEIGHT = WIDTH
 DIMENSION = 8
 MAX_FPS = 15
@@ -35,7 +35,7 @@ def map_move(moves):
     return first_move, second_move
 
 def draw_Board(screen):
-    colors = [p.Color("white"), p.Color("gray")]
+    colors = [p.Color("blue"), p.Color("white")]
 
     for r in range(DIMENSION):
         for c in range(DIMENSION):
@@ -66,7 +66,7 @@ def draw_software_board(move):
 
         for event in p.event.get():
             if event.type == p.QUIT:
-                pygame.quit()
+                p.quit()
                 running4 = False
        
         if(running4):
@@ -75,6 +75,11 @@ def draw_software_board(move):
             draw_pieces(screen,gs.board)
             clock.tick(MAX_FPS)
             p.display.flip()
+
+def do_hardware_move(move):
+    first_move, second_move = map_move(move)
+    gs.board[int(second_move[1])][int(second_move[0])] = gs.board[int(first_move[1])][int(first_move[0])]
+    gs.board[int(first_move[1])][int(first_move[0])] = "--"
 
 def load_Images():
 
@@ -179,6 +184,7 @@ while(True):
                 if (chess.Move.from_uci(myBoard.determineChanges(previous, current)) not in engboard.legal_moves):
                     print(myBoard.determineChanges(previous, current)+"Move is not valid, retake picture.")
                 else:
+                    do_hardware_move(myBoard.determineChanges(previous, current))
                     break
 
 
